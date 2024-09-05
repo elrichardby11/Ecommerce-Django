@@ -131,7 +131,7 @@
 		<figure class="card card-product-grid">
 			<div class="img-wrap"> 
 				
-				<img src="{{product.images.url}}">
+			<a href="{% url 'product_detail' product.category.slug product.slug %}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
 				
 			</div> <!-- img-wrap.// -->
 			<figcaption class="info-wrap">

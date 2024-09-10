@@ -4387,7 +4387,18 @@ input[type=button].btn-block {
   margin-bottom: 0;
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: green;
 }
+
+.title, a {
+  color: green;
+}
+
+select:hover {
+  color: green; /* Change text color on hover */
+  background-color: #f0f0f0; /* Optional: change background color */
+}
+
 .card-header:first-child {
   border-radius: calc(0.37rem - 1px) calc(0.37rem - 1px) 0 0;
 }

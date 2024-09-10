@@ -18,6 +18,7 @@ def store(request, category_slug=None):
     paged_products = pagination(request, products, 3)
 
     return render(request, "store.html", context={
+        "category": categories,
         "products": paged_products,
         "products_count": products_count,
     })

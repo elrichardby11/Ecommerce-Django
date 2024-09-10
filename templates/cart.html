@@ -29,8 +29,8 @@
 		<figure class="itemside align-items-center">
 			<div class="aside"><img src="{{ cart_item.product.images.url }}" class="img-sm"></div>
 			<figcaption class="info">
-				<a href="#" class="title text-dark">{{cart_item.product.product_name}}</a>
-				<p class="text-muted small">Categoria: {{ cart_item.product.category }}<br>
+				<a href="{% url 'product_detail' cart_item.product.category.slug cart_item.product.slug %}" class="title text-dark">{{cart_item.product.product_name}}</a>
+				<p class="text-muted small">Categoria:<a href="{% url 'products_by_category' cart_item.product.category.slug %}"> {{ cart_item.product.category }}</a><br>
 					{% if cart_item.product.description != "" %}
 					Descripción: {{ cart_item.product.description }}
 					{% endif %}</p>
@@ -58,7 +58,7 @@
 		</div> <!-- price-wrap .// -->
 	</td>
 	<td class="text-right"> 
-	<a href="{% url 'remove_cart_item' cart_item.product.id %}" class="btn btn-danger"> Remove</a>
+	<a href="{% url 'remove_cart_item' cart_item.product.id %}" class="btn btn-danger"> Eliminar</a>
 	</td>
 </tr>
 
@@ -86,10 +86,10 @@
 			</dl>
 			<hr>
 			<p class="text-center mb-3">
-				<img src="{% static 'images/misc/payments.png' %}" height="26">
+				<img src="{% static 'images/misc/payments.png' %}" height="52">
 			</p>
-			<a href="./place-order.html" class="btn btn-primary btn-block"> Checkout </a>
-			<a href="./store.html" class="btn btn-light btn-block">Continue Shopping</a>
+			<a href="./place-order.html" class="btn btn-success btn-block"> Confirmar </a>
+			<a href="{% url 'store' %}" class="btn btn-light btn-block">Continuar Comprando</a>
 		</div> <!-- card-body.// -->
 		</div> <!-- card.// -->
 

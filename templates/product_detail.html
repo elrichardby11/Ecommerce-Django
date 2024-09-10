@@ -24,49 +24,17 @@
 <p>{{ product.description }}</p>
 
 <hr>
-	<div class="row">
-		<div class="item-option-select">
-			<h6>Choose Color</h6>
-			<div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
-			  <label class="btn btn-light">
-			    <input type="radio" name="radio_color"> Silver
-			  </label>
-			  <label class="btn btn-light">
-			    <input type="radio" name="radio_color" > Gray
-			  </label>
-			  <label class="btn btn-light active">
-			    <input type="radio" name="radio_color checked"> Gold
-			  </label>
-			  <label class="btn btn-light">
-			    <input type="radio" name="radio_color"> Black
-			  </label>
-			</div> 
-		</div>
-	</div> <!-- row.// -->
-	<div class="row">
-		<div class="item-option-select">
-			<h6>Select Size</h6>
-			<div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
-			  <label class="btn btn-light">
-			    <input type="radio" name="radio_color"> S
-			  </label>
-			  <label class="btn btn-light active">
-			    <input type="radio" name="radio_color" checked> M
-			  </label>
-			  <label class="btn btn-light">
-			    <input type="radio" name="radio_color"> L
-			  </label>
-			  <label class="btn btn-light">
-			    <input type="radio" name="radio_color"> XL
-			  </label>
-			</div> 
-		</div>
-	</div> <!-- row.// -->
-	<hr>
+
+<p class="text-muted small"><strong>Categoria:</strong> 
+	<a href="{% url 'products_by_category' product.category.slug %}">{{ product.category.category_name }}</a>
+</p>
+
+<hr>
+
 	{% if product.stock %}
-		<a href="{% url 'add_cart' product.id %}" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+		<a href="{% url 'add_cart' product.id %}" class="btn  btn-success"> <span class="text">Agregar al Carrito</span> <i class="fas fa-shopping-cart"></i>  </a>
 	{% else %}
-		<h2 class="title">Sin stock</h2>
+		<h2 class="title">Sin Unidades Disponibles</h2>
 	{% endif %}
 </article> <!-- product-info-aside .// -->
 		</main> <!-- col.// -->

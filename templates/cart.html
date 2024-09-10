@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load custom_filters %}
+
 {% block content %}
 
 
@@ -53,8 +55,8 @@
 	</td>
 	<td> 
 		<div class="price-wrap"> 
-			<var class="price">${{ cart_item.subtotal }}</var> 
-			<small class="text-muted"> ${{ cart_item.product.price }} C/U.</small> 
+			<var class="price">{{ cart_item.subtotal|format_clp }}</var> 
+			<small class="text-muted"> ${{ cart_item.product.price|format_clp }} C/U.</small> 
 		</div> <!-- price-wrap .// -->
 	</td>
 	<td class="text-right"> 

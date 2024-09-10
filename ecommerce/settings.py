@@ -70,6 +70,11 @@ TEMPLATES = [
                 'category.context_processors.global_category',
                 'carts.context_processors.counter_items',
             ],
+            'libraries':{
+                'custom_filters': 'ecommerce.templatetags.custom_filters',
+            
+            }
+
         },
     },
 ]

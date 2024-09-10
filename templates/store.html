@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% load custom_filters %}
+
 {% if category %}
 
 <section class="section-intro padding-y-sm">
@@ -118,7 +120,7 @@
 				<div class="fix-height">
 					<a href="{% url 'product_detail' product.category.slug product.slug %}" class="title">{{ product.product_name }}</a>
 					<div class="price-wrap mt-2">
-						<span class="price">{{ product.price }}</span>
+						<span class="price">{{ product.price|format_clp }}</span>
 					</div> <!-- price-wrap.// -->
 				</div>
 				<a href="{% url 'add_cart' product.id %}" class="btn btn-block btn-success">Añadir al carrito </a>

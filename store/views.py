@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 
+from carts.models import CartItem
+from carts.views import cart_id
 from category.models import Category
 from store.models import Product
 
@@ -31,5 +33,17 @@ def pagination(request, products, products_by_page):
     return paged_products
 
 def product_detail(request, category_slug, product_slug):
+    count=0
     product = Product.objects.get(category__slug=category_slug, slug=product_slug)
-    return render(request, "product_detail.html", context={"product": product})
+    in_cart = CartItem.objects.filter(cart__cart_id=cart_id(request), product=product).exists()
+
+    if in_cart:
+        count = CartItem.objects.get(cart__cart_id=cart_id(request), product=product).quantity
+
+    context = {
+        "product": product,
+        "in_cart": in_cart,
+        "count": count,
+    }
+
+    return render(request, "product_detail.html", context)

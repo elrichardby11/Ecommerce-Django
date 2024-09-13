@@ -35,7 +35,7 @@
 
 	{% if product.stock %}
 		{% if in_cart %}
-		<a href="{% url 'add_cart' product.id %}" class="btn  btn-success"> <span class="text">{{ count }} productos añadidos al carrito</span> <i class="fas fa-check"></i>  </a>
+		<a href="{% url 'add_cart' product.id %}" class="btn  btn-success"> <span class="text">{{ count }} unidades añadidos al carrito</span> <i class="fas fa-check"></i>  </a>
 		<a href="{% url 'cart' %}" class="btn  btn-primary"> <span class="text">Ver en el Carrito</span> <i class="fas fa-eye"></i>  </a>
 		{% else %}
 			<a href="{% url 'add_cart' product.id %}" class="btn  btn-success"> <span class="text">Agregar al Carrito</span> <i class="fas fa-shopping-cart"></i>  </a>

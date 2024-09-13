@@ -17,7 +17,7 @@ def store(request, category_slug=None):
         products = Product.objects.all()
     
     products_count = products.count()
-    paged_products = pagination(request, products, 3)
+    paged_products = pagination(request, products, 4)
 
     return render(request, "store.html", context={
         "category": categories,
@@ -47,3 +47,20 @@ def product_detail(request, category_slug, product_slug):
     }
 
     return render(request, "product_detail.html", context)
+
+def search(request):
+    search_query = request.GET.get("query", "")
+
+    products = Product.objects.all()
+    products_count = products.count()
+
+    if search_query:
+        products = products.filter(product_name__contains = search_query)
+        products_count = products.count()
+
+    context = {
+        "query": search_query,
+        "products": products,
+        "products_count": products_count
+    }
+    return render(request, "search-result.html", context=context)

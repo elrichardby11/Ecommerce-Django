@@ -56,7 +56,7 @@
 	<td> 
 		<div class="price-wrap"> 
 			<var class="price">{{ cart_item.subtotal|format_clp }}</var> 
-			<small class="text-muted"> ${{ cart_item.product.price|format_clp }} C/U.</small> 
+			<small class="text-muted">{{ cart_item.product.price|format_clp }} C/U.</small> 
 		</div> <!-- price-wrap .// -->
 	</td>
 	<td class="text-right"> 
@@ -76,21 +76,21 @@
 		<div class="card-body">
 			<dl class="dlist-align">
 			  <dt>Precio Total:</dt>
-			  <dd class="text-right">${{ total }}</dd>
+			  <dd class="text-right">{{ total|format_clp }}</dd>
 			</dl>
 			<dl class="dlist-align">
 			  <dt>IVA (19%):</dt>
-			  <dd class="text-right"> ${{ IVA|floatformat:0 }}</dd>
+			  <dd class="text-right">{{ IVA|floatformat:0|format_clp }}</dd>
 			</dl>
 			<dl class="dlist-align">
 			  <dt>Total:</dt>
-			  <dd class="text-right text-dark b"><strong>${{ total }}</strong></dd>
+			  <dd class="text-right text-dark b"><strong>{{ total|format_clp }}</strong></dd>
 			</dl>
 			<hr>
 			<p class="text-center mb-3">
 				<img src="{% static 'images/misc/payments.png' %}" height="52">
 			</p>
-			<a href="./place-order.html" class="btn btn-success btn-block"> Confirmar </a>
+			<a href="{% url "home" %}" class="btn btn-success btn-block"> Confirmar </a>
 			<a href="{% url 'store' %}" class="btn btn-light btn-block">Continuar Comprando</a>
 		</div> <!-- card-body.// -->
 		</div> <!-- card.// -->

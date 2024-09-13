@@ -9,4 +9,4 @@ def format_clp(value):
     except (ValueError, TypeError):
         return value
     
-    return f"${value:,.0f}".replace(',', '.')
+    return f"$ {value:,.0f}".replace(',', '.')

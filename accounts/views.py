@@ -21,23 +21,28 @@ def register(request):
             user.phone_number = phone_number
             user.save()
 
+            # Podrías redirigir a una página de éxito o inicio de sesión
+            return redirect('login')
+
     form = RegistrationForm()
+
     return render(request, "register.html", context={"form": form})
+
 
 def login(request):
     if request.method == "POST":
         email = request.POST["email"]
         password = request.POST["password"]
-        print(email, password)
         user = auth.authenticate(request, email=email, password=password)
-        print(user)
-        if user is not None:
-            auth.login(request, user)
-            return redirect('home')
-        else:
+        
+        if user is None:
             return redirect('login')
+        
+        auth.login(request, user)
+        return redirect('home')
+    
     return render(request, 'login.html')
 
-
 def logout(request):
-    return render(request, "index.html")
+    auth.logout(request)
+    return redirect("login")

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 
 <!-- ========================= SECTION CONTENT ========================= -->
@@ -11,9 +13,9 @@
 		<header class="mb-4"><h4 class="card-title">Registrarse</h4></header>
 		<form action="{% url 'register' %}" method="POST">
 			{% csrf_token %}
-			{{ form.as_p }}
+			{{ form|crispy }}  <!-- Usando crispy para el formato -->
 			    <div class="form-group">
-			        <button type="submit" class="btn btn-success btn-block"> Registrar  </button>
+			        <button type="submit" class="btn btn-success btn-block">Registrar</button>
 			    </div> <!-- form-group// -->      
 			</form>
 		</article><!-- card-body.// -->
@@ -21,7 +23,6 @@
     <p class="text-center mt-4">Ya tienes cuenta? <a href="{% url 'login' %}">Entra</a></p>
     <br><br>
 <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
-
 
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->

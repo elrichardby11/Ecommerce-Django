@@ -11,20 +11,21 @@ class MyAccountManager(BaseUserManager):
             raise ValueError("Debe ingresar un nombre de usuario! ")
         
         user = self.model(
-            email = self.normalize_email(email),
+            email = self.normalize_email(email=email),
             username = username,
             first_name=first_name,
-            last_name=last_name
+            last_name=last_name,
         )
 
         user.set_password(password)
+        user.is_active = True
         user.save(using=self._db)
         return user
     
-    def create_superuser(self, first_name, last_name, username, email, password):
+    def create_superuser(self, first_name, last_name, email, username, password):
         
         user = self.create_user(
-            email = self.normalize_email(email),
+            email = self.normalize_email(email=email),
             username = username,
             password = password,
             first_name=first_name,
@@ -65,7 +66,7 @@ class Account(AbstractBaseUser):
     def has_perm(self, perm, obj=None):
         return self.is_admin
     
-    def has_module_perm(self, add_label):
+    def has_module_perms(self, add_label):
         return True
     
     objects = MyAccountManager()

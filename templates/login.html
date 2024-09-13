@@ -12,10 +12,10 @@
       <form href="{% url 'login' %}" method="POST">
             {% csrf_token %}
           <div class="form-group">
-			 <input id="email" name="email" type="email" class="form-control" placeholder="ejemplo@dominio.cl" >
+			 <input type="email" name="email" class="form-control" placeholder="ejemplo@dominio.cl" >
           </div> <!-- form-group// -->
           <div class="form-group">
-			<input id="password" name="password" type="password" class="form-control" placeholder="Contraseña" >
+			<input type="password" name="password" class="form-control" placeholder="Contraseña" >
           </div> <!-- form-group// -->
           
           <div class="form-group">
